@@ -1,0 +1,691 @@
+
+config nodes 'ongvapNw'
+	option remarks 'TJ'
+	option type 'Xray'
+	option protocol 'trojan'
+	option address '104.16.53.111'
+	option port '443'
+	option password 'dba9cbdc-a478-460a-b0f8-3bfa8149d586'
+	option tls '1'
+	option alpn 'default'
+	option tls_serverName 'in.dogayengvpn.my.id'
+	option transport 'ws'
+	option ws_host 'in.dogayengvpn.my.id'
+	option ws_path '/trojan'
+	option tls_allowInsecure '1'
+
+config nodes 'QUJMUyFX'
+	option remarks 'VM'
+	option type 'Xray'
+	option protocol 'vmess'
+	option address '104.16.53.111'
+	option port '443'
+	option security 'none'
+	option uuid 'ef996436-8b37-43b7-b19b-3b1681db6596'
+	option tls '1'
+	option alpn 'default'
+	option tls_serverName 'in.dogayengvpn.my.id'
+	option tls_allowInsecure '1'
+	option transport 'ws'
+	option ws_host 'in.dogayengvpn.my.id'
+	option ws_path '/vmess'
+
+config nodes '6hVMpSwB'
+	option tls '1'
+	option tls_allowInsecure '1'
+	option port '443'
+	option ws_path '/vless'
+	option remarks 'VL'
+	option alpn 'default'
+	option ws_host 'in.dogayengvpn.my.id'
+	option tls_serverName 'in.dogayengvpn.my.id'
+	option protocol 'vless'
+	option address '104.16.53.111'
+	option transport 'ws'
+	option uuid 'cceb7207-f74f-4563-8f2b-6a6ff381d899'
+	option type 'Xray'
+	option add_mode '1'
+	option encryption 'none'
+
+config nodes 'BD1PAY5a'
+	option remarks 'LB'
+	option type 'Xray'
+	option protocol '_balancing'
+	option balancingStrategy 'leastPing'
+	list balancing_node 'ongvapNw'
+	list balancing_node 'QUJMUyFX'
+	list balancing_node '6hVMpSwB'
+	option probeInterval '1m'
+
+config nodes 'sDkJvs6Y'
+	option remarks 'RULE'
+	option type 'Xray'
+	option protocol '_shunt'
+	option ADBLOCK '_blackhole'
+	option default_node 'BD1PAY5a'
+	option domainStrategy 'IPOnDemand'
+	option domainMatcher 'hybrid'
+	option WA '_direct'
+	option ADULT 'QUJMUyFX'
+	option preproxy_enabled '0'
+	option Youtube 'ongvapNw'
+	option IG 'QUJMUyFX'
+	option FB 'QUJMUyFX'
+	option Tiktok '6hVMpSwB'
+
+config shunt_rules 'ADBLOCK'
+	option remarks 'ADBLOCK'
+	option domain_list 'ads.google.com
+adservice.google.com
+googleadservices.com
+media.net
+doubleclick.net
+fastclick.com
+fastclick.net
+adtago.s3.amazonaws.com
+analyticsengine.s3.amazonaws.com
+advice-ads.s3.amazonaws.com
+affiliationjs.s3.amazonaws.com
+advertising-api-eu.amazon.com
+amazonaax.com
+amazonclix.com
+assoc-amazon.com
+ads.yahoo.com
+adserver.yahoo.com
+adspecs.yahoo.com
+advertising.yahoo.com
+analytics.yahoo.com
+comet.yahoo.com
+log.fc.yahoo.com
+ganon.yahoo.com
+gemini.yahoo.com
+geo.yahoo.com
+marketingsolutions.yahoo.com
+pclick.yahoo.com
+analytics.query.yahoo.com
+geo.query.yahoo.com
+onepush.query.yahoo.com
+bats.video.yahoo.com
+visit.webhosting.yahoo.com
+ads.yap.yahoo.com
+m.yap.yahoo.com
+partnerads.ysm.yahoo.com
+appmetrica.yandex.com
+report.appmetrica.yandex.net
+extmaps-api.yandex.net
+analytics.mobile.yandex.net
+banners.mobile.yandex.net
+banners-slb.mobile.yandex.net
+startup.mobile.yandex.net
+offerwall.yandex.net
+adfox.yandex.ru
+adsdk.yandex.ru
+an.yandex.ru
+redirect.appmetrica.yandex.ru
+awaps.yandex.ru
+awsync.yandex.ru
+bs.yandex.ru
+bs-meta.yandex.ru
+clck.yandex.ru
+informer.yandex.ru
+kiks.yandex.ru
+grade.market.yandex.ru
+mc.yandex.ru
+metrika.yandex.ru
+click.sender.yandex.ru
+share.yandex.ru
+yandexadexchange.net
+match.adsrvr.org
+tsyndicate.com
+pxl.tsyndicate.com
+cdn.tsyndicate.com
+syndication.realsrv.com
+adsco.re
+syndication.exosrv.com
+nereserv.com
+clickadilla.com
+adxadserv.com
+static-clst.avgle.com
+forlumineoner.com
+jaavnacsdw.com
+taaqhr6axacd2um.com
+stagepopkek.com
+kxnggkh2nj.com
+limurol.com
+abservinean.com
+static.adsafeprotected.com
+cloudflareinsights.com
+aeeg5idiuenbi7erger.com
+histats.com
+fdelphaswcealifornica.com
+morrowfreezer.com
+akmxts.com
+berthsorry.com
+xxxijmp.com
+jads.co
+berthsorry.com
+lanternpossibly.com
+cloudflareinsights.com
+plumposterity.com
+amung.us
+daisycontroversy.com
+juicyads.com
+xlviirdr.com
+addthis.com
+jwpcdn.com
+cuddlethehyena.com
+imasdk.googleapis.com
+fdelphaswcealifornica.com
+google-analytics.com
+api-hotjar.com
+hotjar-analytics.com
+hotjar.com
+mouseflow.com
+a.mouseflow.com
+freshmarketer.com
+luckyorange.com
+luckyorange.net
+settings.luckyorange.net
+cs.luckyorange.net
+upload.luckyorange.net
+w1.luckyorange.com
+cdn.luckyorange.com
+stats.wp.com
+notify.bugsnag.com
+sessions.bugsnag.com
+api.bugsnag.com
+app.bugsnag.com
+browser.sentry-cdn.com
+app.getsentry.com
+pixel.facebook.com
+analytics.facebook.com
+ads.facebook.com
+an.facebook.com
+ads-api.twitter.com
+advertising.twitter.com
+ads-twitter.com
+ads.linkedin.com
+analytics.pointdrive.linkedin.com
+ads.pinterest.com
+log.pinterest.com
+ads-dev.pinterest.com
+analytics.pinterest.com
+trk.pinterest.com
+trk2.pinterest.com
+widgets.pinterest.com
+ads.reddit.com
+rereddit.com
+events.redditmedia.com
+d.reddit.com
+ads-sg.tiktok.com
+analytics-sg.tiktok.com
+ads.tiktok.com
+analytics.tiktok.com
+ads.youtube.com
+youtube.cleverads.vn
+bdapi-in-ads.realmemobile.com
+adsfs.oppomobile.com
+adx.ads.oppomobile.com
+bdapi.ads.oppomobile.com
+ck.ads.oppomobile.com
+data.ads.oppomobile.com
+g1.ads.oppomobile.com
+api.ad.xiaomi.com
+app.chat.xiaomi.net
+data.mistat.xiaomi.com
+data.mistat.intl.xiaomi.com
+data.mistat.india.xiaomi.com
+data.mistat.rus.xiaomi.com
+sdkconfig.ad.xiaomi.com
+sdkconfig.ad.intl.xiaomi.com
+globalapi.ad.xiaomi.com
+www.cdn.ad.xiaomi.com
+tracking.miui.com
+sa.api.intl.miui.com
+tracking.intl.miui.com
+tracking.india.miui.com
+tracking.rus.miui.com
+analytics.oneplus.cn
+click.oneplus.cn
+click.oneplus.com
+open.oneplus.net
+metrics.data.hicloud.com
+metrics1.data.hicloud.com
+metrics2.data.hicloud.com
+metrics3.data.hicloud.com
+metrics4.data.hicloud.com
+metrics5.data.hicloud.com
+logservice.hicloud.com
+logservice1.hicloud.com
+metrics-dra.dt.hicloud.com
+logbak.hicloud.com
+samsungadhub.com
+samsungads.com
+smetrics.samsung.com
+nmetrics.samsung.com
+samsung-com.112.2o7.net
+business.samsungusa.com
+analytics.samsungknox.com
+bigdata.ssp.samsung.com
+analytics-api.samsunghealthcn.com
+metrics.apple.com
+securemetrics.apple.com
+supportmetrics.apple.com
+metrics.icloud.com
+metrics.mzstatic.com
+dzc-metrics.mzstatic.com
+books-analytics-events.news.apple-dns.net
+books-analytics-events.apple.com
+stocks-analytics-events.apple.com
+stocks-analytics-events.news.apple-dns.net'
+
+config shunt_rules 'WA'
+	option remarks 'WA'
+	option domain_list 'wa.me
+m.me
+oculus.com
+oculuscdn.com
+rocksdb.org
+whatsapp-plus.info
+whatsapp-plus.me
+whatsapp-plus.net
+whatsapp.cc
+whatsapp.com
+whatsapp.info
+whatsapp.net
+whatsapp.org
+whatsapp.tv
+whatsappbrand.com'
+
+config shunt_rules 'ADULT'
+	option remarks 'ADULT'
+	option domain_list 'avtik.com
+vl2.vlxx.xxx
+vlxx.moe
+vlxx.sex
+javstory1.com
+yandex.com
+xvideos.com
+xnxx.com
+spankbang.com
+xhamster.com
+pornhub.com
+missav123.com
+okrek.pro
+simontok.bid
+likeav.org
+tv5.bioskop21.vip
+doood.click
+gudangfilm21.info
+doodviral.pro
+banal.cc
+njavtv.com'
+
+config global
+	option dns_mode 'dns2socks'
+	option acl_enable '0'
+	option enabled '1'
+	option tcp_node 'sDkJvs6Y'
+	option udp_node 'tcp'
+	option tcp_node_socks_port '1070'
+	option socks_server '127.0.0.1:1070'
+	option remote_dns '9.9.9.9'
+	option dns_cache '1'
+	option when_chnroute_default_dns 'direct'
+	option tcp_proxy_mode 'chnroute'
+	option udp_proxy_mode 'chnroute'
+	option localhost_tcp_proxy_mode 'default'
+	option localhost_udp_proxy_mode 'default'
+	option close_log_tcp '0'
+	option close_log_udp '0'
+	option loglevel 'warning'
+	option trojan_loglevel '2'
+	option advanced_log_feature '0'
+	option socks_enabled '0'
+
+config global_haproxy
+	option balancing_enable '0'
+
+config global_delay
+	option auto_on '0'
+	option start_daemon '1'
+	option start_delay '60'
+
+config global_forwarding
+	option tcp_no_redir_ports 'disable'
+	option udp_no_redir_ports 'disable'
+	option tcp_proxy_drop_ports 'disable'
+	option udp_proxy_drop_ports '443'
+	option tcp_redir_ports '1:65535'
+	option udp_redir_ports '1:65535'
+	option accept_icmp '0'
+	option use_nft '1'
+	option tcp_proxy_way 'redirect'
+	option ipv6_tproxy '0'
+
+config global_xray
+	option sniffing '1'
+	option route_only '0'
+
+config global_singbox
+	option sniff_override_destination '0'
+	option geoip_path '/usr/share/singbox/geoip.db'
+	option geoip_url 'https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db'
+	option geosite_path '/usr/share/singbox/geosite.db'
+	option geosite_url 'https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db'
+
+config global_other
+
+config global_rules
+	option chnlist_update '1'
+	option chnroute_update '1'
+	option chnroute6_update '1'
+	option gfwlist_update '1'
+	option geosite_update '0'
+	option geoip_update '0'
+	option v2ray_location_asset '/usr/share/v2ray/'
+	option auto_update '0'
+
+config global_app
+	option singbox_file '/usr/bin/sing-box'
+	option xray_file '/usr/bin/xray'
+	option trojan_go_file '/usr/bin/trojan-go'
+	option brook_file '/usr/bin/brook'
+	option hysteria_file '/usr/bin/hysteria'
+	option chinadns_ng '/usr/bin/chinadns-ng'
+
+config global_subscribe
+	option filter_keyword_mode '1'
+	list filter_discard_list '过期时间'
+	list filter_discard_list '剩余流量'
+	list filter_discard_list 'QQ群'
+	list filter_discard_list '官网'
+
+config shunt_rules 'Youtube'
+	option remarks 'Youtube'
+	option domain_list 'googlevideo.com
+gvt1.com
+video.google.com
+video.l.google.com
+youtu.be
+youtube.ae
+youtube.al
+youtube.am
+youtube.at
+youtube.az
+youtube.ba
+youtube.be
+youtube.bg
+youtube.bh
+youtube.bo
+youtube.by
+youtube.ca
+youtube.cat
+youtube.ch
+youtube.cl
+youtube.co
+youtube.co.ae
+youtube.co.at
+youtube.co.cr
+youtube.co.hu
+youtube.co.id
+youtube.co.il
+youtube.co.in
+youtube.co.jp
+youtube.co.ke
+youtube.co.kr
+youtube.com
+youtube.co.ma
+youtube.com.ar
+youtube.com.au
+youtube.com.az
+youtube.com.bd
+youtube.com.bh
+youtube.com.bo
+youtube.com.br
+youtube.com.by
+youtube.com.co
+youtube.com.do
+youtube.com.ec
+youtube.com.ee
+youtube.com.eg
+youtube.com.es
+youtube.com.gh
+youtube.com.gr
+youtube.com.gt
+youtube.com.hk
+youtube.com.hn
+youtube.com.hr
+youtube.com.jm
+youtube.com.jo
+youtube.com.kw
+youtube.com.lb
+youtube.com.lv
+youtube.com.ly
+youtube.com.mk
+youtube.com.mt
+youtube.com.mx
+youtube.com.my
+youtube.com.ng
+youtube.com.ni
+youtube.com.om
+youtube.com.pa
+youtube.com.pe
+youtube.com.ph
+youtube.com.pk
+youtube.com.pt
+youtube.com.py
+youtube.com.qa
+youtube.com.ro
+youtube.com.sa
+youtube.com.sg
+youtube.com.sv
+youtube.com.tn
+youtube.com.tr
+youtube.com.tw
+youtube.com.ua
+youtube.com.uy
+youtube.com.ve
+youtube.co.nz
+youtube.co.th
+youtube.co.tz
+youtube.co.ug
+youtube.co.uk
+youtube.co.ve
+youtube.co.za
+youtube.co.zw
+youtube.cr
+youtube.cz
+youtube.de
+youtube.dk
+youtubeeducation.com
+youtube.ee
+youtubeembeddedplayer.googleapis.com
+youtube.es
+youtube.fi
+youtube.fr
+youtube.ge
+youtube.googleapis.com
+youtube.gr
+youtube.gt
+youtube.hk
+youtube.hr
+youtube.hu
+youtube.ie
+youtubei.googleapis.com
+youtube.in
+youtube.iq
+youtube.is
+youtube.it
+youtube.jo
+youtube.jp
+youtubekids.com
+youtube.kr
+youtube.kz
+youtube.la
+youtube.lk
+youtube.lt
+youtube.lu
+youtube.lv
+youtube.ly
+youtube.ma
+youtube.md
+youtube.me
+youtube.mk
+youtube.mn
+youtube.mx
+youtube.my
+youtube.ng
+youtube.ni
+youtube.nl
+youtube.no
+youtube-nocookie.com
+youtube.pa
+youtube.pe
+youtube.ph
+youtube.pk
+youtube.pl
+youtube.pr
+youtube.pt
+youtube.qa
+youtube.ro
+youtube.rs
+youtube.ru
+youtube.sa
+youtube.se
+youtube.sg
+youtube.si
+youtube.sk
+youtube.sn
+youtube.soy
+youtube.sv
+youtube.tn
+youtube.tv
+youtube.ua
+youtube.ug
+youtube-ui.l.google.com
+youtube.uy
+youtube.vn
+yt3.ggpht.com
+yt.be
+ytimg.com
+ytimg.l.google.com
+ytkids.app.goo.gl
+yt-video-upload.l.google.com'
+
+config shunt_rules 'IG'
+	option remarks 'IG'
+	option domain_list 'cdninstagram.com
+ig.me
+igsonar.com
+instagram.c10r.facebook.com
+instagram.com'
+
+config shunt_rules 'FB'
+	option remarks 'FB'
+	option domain_list 'accountkit.com
+acebook.com
+faacebook.com
+facebbook.com
+facebookcareers.com
+facebook.co
+facebook.com
+facebook.com.au
+facebook.com.mx
+facebook-dns.com
+facebookenterprise.com
+facebook-hardware.com
+facebook.it
+facebookmail.com
+facebook.net
+facebookrecruiting.com
+facebookstudy.com
+facebookvirtualassistant.com
+fb.audio
+fbcdn.net
+fb.com
+fbe2e.com
+fb.gg
+fbinfra.net
+fb.me
+fbpigeon.com
+fbsbx.com
+fbthirdpartypixel.com
+fb.watch
+fbwat.ch
+internet.org
+m-freeway.com
+parse.com
+wit.ai'
+
+config shunt_rules 'Tiktok'
+	option remarks 'Tiktok'
+	option domain_list 'abtest-sg-tiktok.byteoversea.com
+abtest-va-tiktok.byteoversea.com
+byteglb.com
+gts.byteoversea.net
+isnssdk.com
+lf1-ttcdn-tos.pstatp.com
+muscdn.com
+musemuse.cn
+musical.ly
+p16-ad-sg.ibyteimg.com
+p16-tiktok-sg.ibyteimg.com
+p16-tiktok-sign-va-h2.ibyteimg.com
+p16-tiktok-va-h2.ibyteimg.com
+p16-tiktok-va.ibyteimg.com
+p16-va-tiktok.ibyteimg.com
+p1-tt.byteimg.com
+p1-tt-ipv6.byteimg.com
+p26-tt.byteimg.com
+p3-tt-ipv6.byteimg.com
+p9-tt.byteimg.com
+pull-f3-hs.pstatp.com
+pull-f5-hs.flive.pstatp.com
+pull-f5-hs.pstatp.com
+pull-f5-mus.pstatp.com
+pull-flv-f1-hs.pstatp.com
+pull-flv-f6-hs.pstatp.com
+pull-flv-l1-hs.pstatp.com
+pull-flv-l1-mus.pstatp.com
+pull-flv-l6-hs.pstatp.com
+pull-hls-l1-mus.pstatp.com
+pull-l3-hs.pstatp.com
+pull-rtmp-f1-hs.pstatp.com
+pull-rtmp-f6-hs.pstatp.com
+pull-rtmp-l1-hs.pstatp.com
+pull-rtmp-l1-mus.pstatp.com
+pull-rtmp-l6-hs.pstatp.com
+quic-tiktok-core-proxy-i18n-gcpva.byteoversea.net
+quic-tiktok-proxy-i18n-gcpva.byteoversea.net
+sf16-ttcdn-tos.ipstatp.com
+sf1-ttcdn-tos.pstatp.com
+sf6-ttcdn-tos.pstatp.com
+sgsnssdk.com
+tiktokcdn.com
+tiktokcdn.com.atomile.com
+tiktokcdn.com.c.bytefcdn-oversea.com
+tiktokcdn.com.c.bytefcdn-ttpeu.com
+tiktokcdn.com.c.bytetcdn.com
+tiktokcdn.com.c.worldfcdn.com
+tiktokcdn.com.qlivecdn.com
+tiktokcdn.com.rocket-cdn.com
+tiktokcdn.com.tlivepush.com
+tiktokcdn-in.com
+tiktokcdn-us.com
+tiktokcdn-us.com.atomile.com
+tiktok.com
+tiktokd.org
+tiktok-lb-alisg.byteoversea.net
+tiktok-lb-maliva.byteoversea.net
+tiktok-platform-lb-alisg.byteoversea.net
+tiktokv.com
+tiktokv.com.c.bytefcdn-oversea.com
+tiktokv.com.c.worldfcdn2.com
+tiktokv.com.c.worldfcdn.com
+tlivecdn.com
+ttlivecdn.com
+ttlivecdn.com.c.worldfcdn.com
+ttoversea.net
+ttoverseaus.net'
+
