@@ -39,6 +39,7 @@ Display Selected Band;AT^SLBAND?
 Lock Band 1;AT^SLBAND=LTE,2,1
 Lock Band 3;AT^SLBAND=LTE,2,3
 Lock Band 1 & 3;AT^SLBAND=LTE,2,1,3
+Lock Band 1,3,8;AT^SLBAND=LTE,2,1,3,8
 Reset Selected Band;AT^SLBAND
 Enable CA;AT^CA_ENABLE=0
 Disable CA;AT^CA_ENABLE=1
