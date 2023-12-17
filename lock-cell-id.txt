@@ -3,6 +3,27 @@ sed -i -e '/413c:81d7/,+5d' /etc/usb-mode.json
 opkg update
 opkg install --force-reinstall libmbim libqmi modemmanager
 
+Crontah
+===============================================
+jam 11.59 Reboot
+59 11 * * * sleep 3 && touch /etc/banner && reboot
+
+Per 1 jam sehari
+0 * * * * sleep 3 && touch /etc/banner && reboot
+Per 2 jam sehari
+0 */2 * * * sleep 3 && touch /etc/banner && reboot
+
+Per 2hari seminggu
+0 * */2 * * sleep 3 && touch /etc/banner && reboot
+
+
+
+Script 
+===============================================
+echo AT+CFUN=4 | atinout - /dev/ttyUSB0 - &&
+ifdown wan1 && sleep 3
+echo AT+CFUN=1 | atinout - /dev/ttyUSB0 - &&
+sleep 3 && ifup wan1
 
 
 
